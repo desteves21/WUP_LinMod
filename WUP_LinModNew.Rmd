@@ -87,10 +87,25 @@ The scatter plot shows that as GRIP scores increase, SMS scores also generally g
 
 ### Numerical results 
 
+```{r}
+cor(SIMS~GRIP,data=data)
+```
+
+This shows that when GRIP strength increases the simulation will be positive.  
 
 ### Inferential  (Build model.2)
-  
+```{r}
+model.2 <- lm(SIMS~GRIP,data=data)
+summary.lm(model.2)
+```  
 
+#### scatterplot with model fit
+```{r}
+plot(SIMS~GRIP,data=data)
+abline(model.2, col='blue')
+```
+
+The p-values for both the intercept and slope are less than 2e-16, meaning they are both very significant and there's a strong link between GRIP and SMS.  
 #### predict model.2 at target point
 
 #### now add the model fit to our plot for model.2
