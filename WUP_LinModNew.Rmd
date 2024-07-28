@@ -54,6 +54,16 @@ A correlation coefficient of 0.6860073 means there's a strong positive relations
 
 ### Inferential  (Build model.1)
 
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
+```
+
+```{r}
+plot(SIMS~ARM,data=data)
+abline(model.1)
+```
+
 #### Predict at target point
 
 
