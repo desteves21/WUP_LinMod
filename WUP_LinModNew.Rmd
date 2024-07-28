@@ -115,20 +115,51 @@ predict(model.2, newdata, interval='pred')
 
 The SIMS prediction for GRIP=94 is -0.54, the predicting interval is (-3.11, 2.04)
 
-#### now add the model fit to our plot for model.2
-  
 
 
 ## Model 3 SIM~ARM+GRIP
 
+ For each model find a 95% prediction interval of SIMS given a value of 94  for GRIP and 88 for ARM.
+
+### Descriptive Results - Scatterplot
+
+```{r}
+plot(SIMS~ARM+GRIP, data=data)
+```
+
 ### Numerical results (cor)
 
-`
+```{r}
+df = data.frame(SIMS = data$SIMS, GRIP = data$GRIP, ARM = data$ARM)
+cor(df)
+
+```
+
+This shows positive correlations between SIMS and ARM, SIMS and GRIP, and ARM and GRIP.
   
 ### Inferential  (Build 2-dimentional model.3)
 
+```{r}
+model.3 = lm(SIMS ~ ARM + GRIP, data = data)
+summary.lm(model.3)
+
+```
+
+F-statistic p-value: 2e-16,  
+Intercept p-value: 2e-16  
+ARM p-value: 1e-8  
+GRIP p-value: 4e-5  
+All p-values are less than 0.05, confirming that both ARM and GRIP significantly influence SIMS.  
+
 #### predict model.3 at target point
-  
+
+```{r}
+newdata = data.frame(GRIP = 94, ARM = 88)
+predSIMS = predict(model.3, newdata, interval = 'pred')
+print(predSIMS)
+
+```
+For GRIP = 94 and ARM = 88, the predicted SIMS score is 0.150, with a prediction interval of (-2.13, 2.43). 
 
 ## Comparing nested models ANOVA Test
 
