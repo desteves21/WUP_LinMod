@@ -163,8 +163,27 @@ For GRIP = 94 and ARM = 88, the predicted SIMS score is 0.150, with a prediction
 
 ## Comparing nested models ANOVA Test
 
+```{r}
+anova(model.1, model.3)
+model.1 = lm(SIMS ~ ARM, data = data)
+summary.lm(model.1)
+```
+
+The ANOVA test shows a improvement in Model 3 over Model 1, with a p-value of 0.000004. Model 3 has a lower residual sum of squares (RSS = 188) compared to Model 1 (RSS = 217).  
 ### Model.1 vs Model.3
 ### Model.2 vs Model.3
 
+```{r}
+model.2 = lm(SIMS ~ GRIP, data = data)
+anova(model.2, model.3)
+summary.lm(model.2)
+```
+
+The ANOVA test shows that Model 3 is better than Model 2 because it has a lower RSS of 188 and a very small p-value of 1.4e-8. This means that adding ARM to GRIP in the model gives a better explanation of SIMS scores.
 ## Informally compare Model.1 with model.2
+
+Model.1 (SIMS ~ ARM) provides a better fit than Model.2 (SIMS ~ GRIP),by lower residuals. This suggests ARM is a slightly stronger predictor of SIMS than GRIP alone.
+
+
+
 
