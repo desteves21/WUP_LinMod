@@ -47,6 +47,10 @@ The scatter plot shows that as ARM values increase, the SMS values also generall
 
 ### Numerical results
 
+```{r}
+cor(SIMS~ARM,data=data)
+```
+A correlation coefficient of 0.6860073 means there's a strong positive relationship between ARM and SMS, so when one goes up, the other usually does too.
 
 ### Inferential  (Build model.1)
 
