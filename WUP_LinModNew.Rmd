@@ -108,6 +108,13 @@ abline(model.2, col='blue')
 The p-values for both the intercept and slope are less than 2e-16, meaning they are both very significant and there's a strong link between GRIP and SMS.  
 #### predict model.2 at target point
 
+```{r}
+newdata = data.frame(ARM =88, GRIP=94)
+predict(model.2, newdata, interval='pred')
+```
+
+The SIMS prediction for GRIP=94 is -0.54, the predicting interval is (-3.11, 2.04)
+
 #### now add the model fit to our plot for model.2
   
 
